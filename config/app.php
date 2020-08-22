@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Store'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Africa/Cairo',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
 
         /*
          * Application Service Providers...
