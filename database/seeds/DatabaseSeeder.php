@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
+use App\Models\SettingTranslation;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,5 +15,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
+
+
+    // ... Some Truncate Query
+    Schema::disableForeignKeyConstraints();
+
+        Setting::truncate();
+        SettingTranslation::truncate();
+
+        Schema::enableForeignKeyConstraints();
+
+        $this->call(SettingDatabaseSeeder::class);
     }
 }
