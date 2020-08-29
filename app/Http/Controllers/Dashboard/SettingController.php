@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class SettingController extends Controller
@@ -34,4 +35,38 @@ class SettingController extends Controller
         return view('dashboard.setting.shipping.edit',compact('shipping_method'));
 
     }//end of edit shipping method
+
+    public function updateShippingMethod(Request $request,$id){
+
+
+        try{
+
+            $shipping_method=Setting::find($id);
+        if(empty($shipping_method)){
+
+            return redirect()->route('edit.shippings.methods',$request->value)->with('error',__('admin/edit_shipping.error_message'));
+        }
+
+        DB::beginTransaction();
+        $shipping_method->update([
+
+            'plain_value'=>$request->plain_value,
+
+
+        ]);
+
+        $shipping_method->value=$request->value;
+        // $shipping_method->plain_value=$request->plain_value;
+        $shipping_method->save();
+
+        DB::commit();
+        return redirect()->back()->with('success',__('admin/edit_shipping.updated'));
+        }catch(\Exception $ex){
+
+            return redirect()->route('admin.home')->with('error',__('admin/edit_shipping.error_message'));
+            DB::rollback();
+        }
+
+
+    }//end of updateShippingMethod
 }

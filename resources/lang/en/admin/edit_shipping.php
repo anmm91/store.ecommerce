@@ -9,4 +9,7 @@ return [
     'delivery_value'=> 'delivery value',
     'name'=> 'name',
     'update'=> 'update',
+    'error_message'=> 'Error occured .plz try again',
+    'updated'=>'updated successfully'
+
 ];
