@@ -18,7 +18,7 @@ class LoginController extends Controller
         $remember_me=$request->has('remember_me') ? true :'' ;
         if(auth()->guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password],$remember_me)){
 
-            
+
             notify()->success('تم التسجيل بنجاح');
             return redirect()->route('admin.home');
         }else{
@@ -26,5 +26,16 @@ class LoginController extends Controller
         }
 
 
-    }//end of post
+    }//end of postlogin
+
+    public function logout(){
+
+        $logout=$this->getGuard();
+        $logout->logout();
+        return redirect()->route('admin.login');
+    }//end of logout
+
+    private function getGuard(){
+        return auth()->guard('admin');
+    }
 }

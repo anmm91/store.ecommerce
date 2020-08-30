@@ -32,7 +32,7 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">مرجبا
                   <span
-                      class="user-name text-bold-700">  Ahmed Emam</span>
+                      class="user-name text-bold-700">{{auth()->guard('admin')->user()->name}}</span>
                 </span>
                             <span class="avatar avatar-online">
                   <img  style="height: 35px;" src="" alt="avatar"><i></i></span>
@@ -40,8 +40,21 @@
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href=""><i
                             class="ft-user"></i> تعديل الملف الشحصي </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=""><i class="ft-power"></i> تسجيل
-                                الخروج </a>
+                            <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <i class="ft-power"></i>  تسجيل الخروج
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                            {{-- <form method="post" action="{{ route('admin.logout') }}">
+                                @csrf
+                                <button class="dropdown-item"><i class="ft-power"></i>تسجيل الخروج</button>
+                            </form> --}}
+                            {{-- <a class="dropdown-item" href=""><i class="ft-power"></i> تسجيل --}}
+                                {{-- الخروج </a> --}}
                         </div>
                     </li>
 
