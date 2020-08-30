@@ -14,6 +14,7 @@ Route::group(
         Route::group(['prefix'=>'admin','namespace' => 'Dashboard','middleware'=>'auth:admin'], function () {
             // dashboard
             Route::get('/','DashboardController@index')->name('admin.home');
+            Route::post('logout','LoginController@logout')->name('admin.logout');
 
 
             Route::group(['prefix' => 'setting'], function () {
@@ -24,9 +25,7 @@ Route::group(
         });
 
 
-    });
-
-    // guest befor make login
+        // guest befor make login
 Route::group(['prefix'=>'admin','namespace' => 'Dashboard','middleware'=>'guest:admin'], function () {
 
     Route::get('/login','LoginController@getLogin')->name('admin.login');
@@ -36,4 +35,7 @@ Route::group(['prefix'=>'admin','namespace' => 'Dashboard','middleware'=>'guest:
     Route::get('/forgot/password/{token}','ForgotPasswordController@getResetPassword')->name('admin.reset');
     Route::post('/forgot/password/{token}','ForgotPasswordController@postResetPassword')->name('admin.post.reset');
 });
+
+
+    });
 
