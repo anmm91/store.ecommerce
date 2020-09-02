@@ -10,6 +10,10 @@ return [
     'name'=> 'name',
     'update'=> 'update',
     'error_message'=> 'Error occured .plz try again',
-    'updated'=>'updated successfully'
+    'updated'=>'updated successfully',
+    'edit_profile'=>'edit profile',
+    'email'=>'email',
+    'password'=>'password',
+    'password_confirmation'=>'password confirmation',
 
 ];
