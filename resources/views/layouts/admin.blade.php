@@ -20,6 +20,9 @@
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
           rel="stylesheet">
 
+          {{-- notify --}}
+    <link rel="stylesheet" href="{{ asset('/') }}/assets/plugin/noty/noty.css">
+    <script src="{{ asset('/') }}/assets/plugin/noty/noty.min.js"></script>      
     <link rel="stylesheet" type="text/css" href="{{ asset('/') }}/assets/admin/{{ getFolder() }}/plugins/animate/animate.css">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/') }}/assets/admin/{{ getFolder() }}/vendors.css">
@@ -182,6 +185,32 @@
     $('#meridians14').timeDropper({
         meridians: true,setCurrentTime: false
     });
+
+    //delete
+    $('.delete').click(function (e) {
+
+        var that = $(this)
+
+        e.preventDefault();
+
+        var n = new Noty({
+            text: "@lang('admin/edit_shipping.delete')",
+            type: "warning",
+            killer: true,
+            buttons: [
+                Noty.button("@lang('admin/edit_shipping.yes')", 'btn btn-success mr-2', function () {
+                    that.closest('form').submit();
+                }),
+
+                Noty.button("@lang('admin/edit_shipping.no')", 'btn btn-primary mr-2', function () {
+                    n.close();
+                })
+            ]
+        });
+
+        n.show();
+
+});//end of delete
 </script>
 
 </body>
