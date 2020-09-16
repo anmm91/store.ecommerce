@@ -15,5 +15,11 @@ return [
     'email'=>'email',
     'password'=>'password',
     'password_confirmation'=>'password confirmation',
+    'created'=>'added successfully',
+    'activated'=>'the status is changed successfully',
+    'delete'=>'are you want to delete',
+    'deleted'=>' deleted successfully',
+    'yes'=>'yes',
+    'no'=>'no',
 
 ];

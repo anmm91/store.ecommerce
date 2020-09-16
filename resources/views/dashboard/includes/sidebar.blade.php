@@ -7,47 +7,49 @@
             </li>
 
             <li class="nav-item"><a href=""><i class="la la-home"></i>
-                <span class="menu-title" data-i18n="nav.dash.main">المتاجر </span>
+                <span class="menu-title" data-i18n="nav.dash.main">الاقسام </span>
                 <span
-                    class="badge badge badge-info badge-pill float-right mr-2">5</span>
+                    class="badge badge badge-info badge-pill float-right mr-2">{{parentCategories()  }}</span>
             </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
+                    <li class="active"><a class="menu-item" href="{{ route('index.main_categories') }}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                        متجر جديد </a>
+                    <li><a class="menu-item" href="{{ route('create.main_categories') }}" data-i18n="nav.dash.crypto">أضافة
+                        قسم جديد </a>
                     </li>
                 </ul>
             </li>
 
 
-            <li class="nav-item"><a href=""><i class="la la-group"></i>
-                <span class="menu-title" data-i18n="nav.dash.main">الفرق </span>
+            <li class="nav-item">
+                <a href=""><i class="la la-group"></i>
+                <span class="menu-title" data-i18n="nav.dash.main">الاقسام الفرعيه </span>
                 <span
-                    class="badge badge badge-danger badge-pill float-right mr-2"></span>
+                    class="badge badge badge-danger badge-pill float-right mr-2">{{ childCategories() }}</span>
             </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
+                    <li class="active"><a class="menu-item" href="{{ route('index.sub_categories') }}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                        فريق </a>
+                    <li><a class="menu-item" href="{{ route('create.sub_categories') }}" data-i18n="nav.dash.crypto">أضافة
+                        قسم فرعى جديد </a>
                     </li>
                 </ul>
             </li>
 
             <li class="nav-item"><a href=""><i class="la la-male"></i>
-                <span class="menu-title" data-i18n="nav.dash.main">المدربين  </span>
+                <span class="menu-title" data-i18n="nav.dash.main">الماركات التجاريه  </span>
                 <span
-                    class="badge badge badge-success badge-pill float-right mr-2"></span>
+                    class="badge badge badge-success badge-pill float-right mr-2">{{  computeBrandsNumber() }}</span>
             </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
+                    <li class="active"><a class="menu-item" href="{{ route('index.brands') }}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                        مدرب </a>
+                    <li><a class="menu-item" href="{{ route('create.brands') }}" data-i18n="nav.dash.crypto">أضافة
+                        ماركه
+                     </a>
                     </li>
                 </ul>
             </li>

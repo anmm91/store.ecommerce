@@ -30,7 +30,43 @@ Route::group(
                 Route::post('update', 'ProfileController@updateProfile')->name('update.profile');
             });
 
-            
+            ########################################## main categories ###########
+            Route::group(['prefix' => 'main-categories'], function () {
+
+                Route::get('/', 'MainCategoriesController@index')->name('index.main_categories');
+                Route::get('create', 'MainCategoriesController@create')->name('create.main_categories');
+                Route::post('store', 'MainCategoriesController@store')->name('store.main_categories');
+                Route::get('edit/{id}', 'MainCategoriesController@edit')->name('edit.main_categories');
+                Route::post('update/{id}', 'MainCategoriesController@update')->name('update.main_categories');
+                Route::post('delete/{id}', 'MainCategoriesController@delete')->name('delete.main_categories');
+                Route::get('activate/{id}', 'MainCategoriesController@activate')->name('activate.main_categories');
+            });
+
+             ########################################## sub categories ###########
+            Route::group(['prefix' => 'sub-categories'], function () {
+
+                Route::get('/', 'SubCategoriesController@index')->name('index.sub_categories');
+                Route::get('create', 'SubCategoriesController@create')->name('create.sub_categories');
+                Route::post('store', 'SubCategoriesController@store')->name('store.sub_categories');
+                Route::get('edit/{id}', 'SubCategoriesController@edit')->name('edit.sub_categories');
+                Route::post('update/{id}', 'SubCategoriesController@update')->name('update.sub_categories');
+                Route::post('delete/{id}', 'SubCategoriesController@delete')->name('delete.sub_categories');
+                Route::get('activate/{id}', 'SubCategoriesController@activate')->name('activate.sub_categories');
+                Route::post('convert/{id}', 'SubCategoriesController@convertToParentOrChild')->name('type.sub_categories');
+            });
+
+             ########################################## brands ###########
+            Route::group(['prefix' => 'brands'], function () {
+
+                Route::get('/', 'BrandsController@index')->name('index.brands');
+                Route::get('create', 'BrandsController@create')->name('create.brands');
+                Route::post('store', 'BrandsController@store')->name('store.brands');
+                Route::get('edit/{id}', 'BrandsController@edit')->name('edit.brands');
+                Route::post('update/{id}', 'BrandsController@update')->name('update.brands');
+                Route::post('delete/{id}', 'BrandsController@delete')->name('delete.brands');
+                Route::get('activate/{id}', 'BrandsController@activate')->name('activate.brands');
+                Route::post('convert/{id}', 'BrandsController@convertToParentOrChild')->name('type.brands');
+            });
         });
 
 
