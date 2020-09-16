@@ -22,7 +22,7 @@
 
           {{-- notify --}}
     <link rel="stylesheet" href="{{ asset('/') }}/assets/plugin/noty/noty.css">
-    <script src="{{ asset('/') }}/assets/plugin/noty/noty.min.js"></script>      
+    <script src="{{ asset('/') }}/assets/plugin/noty/noty.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('/') }}/assets/admin/{{ getFolder() }}/plugins/animate/animate.css">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/') }}/assets/admin/{{ getFolder() }}/vendors.css">
@@ -211,6 +211,22 @@
         n.show();
 
 });//end of delete
+
+// image preview
+
+        $(".image").change(function () {
+
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.image-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+            }
+
+        });
 </script>
 
 </body>

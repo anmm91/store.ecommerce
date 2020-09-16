@@ -41,7 +41,7 @@ class MainCategoriesController extends Controller
             return redirect()->route('index.main_categories')->with('error',__('admin/edit_shipping.error_message'));
         }
 
-    }//end of create
+    }//end of store
 
     public function edit($id){
 
