@@ -7,21 +7,22 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 
-class MainCategoriesController extends Controller
+class CategoriesController extends Controller
 {
     public function index(){
 
-        $categories=Category::orderBy('id','desc')->parent()->paginate(PAGINTE_COUNT);
+        $categories=Category::orderBy('id','desc')->paginate(PAGINTE_COUNT);
         return view('dashboard.categories.index',compact('categories'));
     }//end of index
 
     public function create(){
 
-
-        return view('dashboard.categories.create');
+        $categories=Category::select('id')->get();
+        return view('dashboard.categories.create',compact('categories'));
     }//end of create
 
     public function store(CategoryRequest $request){
+
 
         try{
 
@@ -29,16 +30,33 @@ class MainCategoriesController extends Controller
             $request->request->add(['is_active'=>0]);
             else
             $request->request->add(['is_active'=>1]);
-            $category=new category;
+
+            if($request->type == 1){
+
+                $request->request->add(['parent_id'=>null]);
+                $category=new category;
             $category->slug           =       $request->slug;
             $category->is_active      =       $request->is_active;
             $category->translateOrNew(app()->getlocale())->name=$request->name;
             $category->save();
+            }else{
 
-            return redirect()->route('index.main_categories')->with('success',__('admin/edit_shipping.created'));
+                $category=new category;
+            $category->slug           =       $request->slug;
+            $category->is_active      =       $request->is_active;
+            $category->parent_id      =       $request->parent_id;
+            $category->translateOrNew(app()->getlocale())->name=$request->name;
+            $category->save();
+
+            }
+
+
+
+
+            return redirect()->route('index.categories')->with('success',__('admin/edit_shipping.created'));
         }catch(\Exception $ex){
 
-            return redirect()->route('index.main_categories')->with('error',__('admin/edit_shipping.error_message'));
+            return redirect()->route('index.categories')->with('error',__('admin/edit_shipping.error_message'));
         }
 
     }//end of store

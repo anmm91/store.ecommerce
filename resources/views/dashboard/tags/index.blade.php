@@ -1,17 +1,17 @@
 @extends('layouts.admin')
-@section('title', ' الاقسام الرئيسيه')
+@section('title', '  العلامات')
 @section('content')
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title"> الاقسام الرئيسيه</h3>
+                <h3 class="content-header-title">  العلامات</h3>
                 <div class="row breadcrumbs-top">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">الرئيسية</a>
                             </li>
-                            <li class="breadcrumb-item active"> الاقسام الرئيسيه
+                            <li class="breadcrumb-item active">  العلامات
                             </li>
                         </ol>
                     </div>
@@ -25,7 +25,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">الاقسام الرئيسيه  </h4>
+                                <h4 class="card-title"> العلامات  </h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -48,36 +48,28 @@
                                         <thead>
                                         <tr>
                                             <th>الاسم</th>
-                                            <th> الاسم بالرابط</th>
-                                            <th>الحالة</th>
-                                            <th>الصوره</th>
+                                            <th> الاسم بالرابط </th>
                                             <th>الإجراءات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
 
-                                            @isset($categories)
+                                            @isset($tags)
 
-                                            @foreach($categories as $category)
+                                            @foreach($tags as $tag)
 
 
 
                                                 <tr>
-                                                    <td>{{ $category->name }} </td>
-                                                    <td>{{$category->slug }} </td>
-                                                    <td>{{ $category->getActive() }}</td>
-                                                    <td> <img style="width:75px;height:75px" src=""> </td>
+                                                    <td>{{ $tag->name }} </td>
+                                                    <td> {{ $tag->slug }} </td>
                                                     <td>
                                                         <div class="btn-group" role="group"
                                                              aria-label="Basic example">
-                                                            <a href="{{ route('edit.categories',$category->id) }}"
+                                                            <a href="{{ route('edit.tags',$tag->id) }}"
                                                                class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
 
-                                                            <a href="{{ route('activate.categories',$category->id) }}"
-                                                               class="btn btn-outline-warning btn-min-width box-shadow-3 mr-1 mb-1">
-                                                               {{ $category->is_active == 1 ? 'تعليق' : 'تفعيل' }}
-                                                            </a>
-                                                            <form method="post" action="{{ route('delete.categories',$category->id) }}">
+                                                            <form method="post" action="{{ route('delete.tags',$tag->id) }}">
                                                                @csrf
                                                                 <button type="submit"
                                                                     value=""

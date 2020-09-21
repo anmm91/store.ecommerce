@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'اضافه لغه')
+@section('title', 'اضافه قسم')
 @section('content')
 <div class="app-content content">
     <div class="content-wrapper">
@@ -42,7 +42,7 @@
                             @include('dashboard.includes.alerts.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form" action="{{ route('store.main_categories')}}" method="POST"
+                                    <form class="form" action="{{ route('store.categories')}}" method="POST"
                                           enctype="multipart/form-data">
                                           @csrf
                                         {{-- <div class="form-group">
@@ -121,7 +121,55 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group mt-1">
+                                                        <input type="radio"  value="1" name="type"
+                                                               id="switcheryColor4"
+                                                               class="switchery" data-color="success"
+                                                               checked />
+                                                        <label for="switcheryColor4"
+                                                               class="card-title ml-1">قسم رئيسى </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group mt-1">
+                                                        <input type="radio"  value="2" name="type"
+                                                               id="switcheryColor4"
+                                                               class="switchery" data-color="success"
+                                                                />
+                                                        <label for="switcheryColor4"
+                                                               class="card-title ml-1">قسم فرعى </label>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div class="row hidden" id="cats-list">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">اختر القسم الرئيسى</label>
+                                                        <select name="parent_id">
+                                                            <optgroup label="من فضلك ادخل القسم">
+                                                                @if(isset($categories))
+                                                                @foreach ($categories as  $category)
+
+                                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                                @endforeach
+                                                                @endif
+                                                            </optgroup>
+
+                                                        </select>
+                                                        @error("parent_id")
+
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+
 
                                         </div>
 
@@ -150,6 +198,16 @@
     </div>
 </div>
 
+@section('script')
+<script>
+    $('input:radio[name="type"]').change(function(){
 
+        if(this.value == 2)
+        $('#cats-list').removeClass('hidden');
+        else
+        $('#cats-list').addClass('hidden');
+    });
+</script>
+@endsection
 @endsection
 
