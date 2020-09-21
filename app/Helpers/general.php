@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tag;
 use App\Models\Brand;
 use App\Models\Category;
 define('PAGINTE_COUNT',10);
@@ -29,6 +30,13 @@ function computeBrandsNumber(){
     return Brand::count();
 }
 
+// function to compute number of tags
+
+function computeTagsNumber(){
+
+    return Tag::count();
+}
+
 // function save image in locale
 
 function uploadImage($folder,$image){
@@ -36,5 +44,7 @@ function uploadImage($folder,$image){
     $image->store('/',$folder);
     $fileName=$image->hashName();
     return $fileName;
-    
+
 }
+
+

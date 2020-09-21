@@ -12,17 +12,17 @@
                     class="badge badge badge-info badge-pill float-right mr-2">{{parentCategories()  }}</span>
             </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="{{ route('index.main_categories') }}"
+                    <li class="active"><a class="menu-item" href="{{ route('index.categories') }}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="{{ route('create.main_categories') }}" data-i18n="nav.dash.crypto">أضافة
+                    <li><a class="menu-item" href="{{ route('create.categories') }}" data-i18n="nav.dash.crypto">أضافة
                         قسم جديد </a>
                     </li>
                 </ul>
             </li>
 
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href=""><i class="la la-group"></i>
                 <span class="menu-title" data-i18n="nav.dash.main">الاقسام الفرعيه </span>
                 <span
@@ -36,7 +36,7 @@
                         قسم فرعى جديد </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="nav-item"><a href=""><i class="la la-male"></i>
                 <span class="menu-title" data-i18n="nav.dash.main">الماركات التجاريه  </span>
@@ -56,16 +56,16 @@
 
 
             <li class="nav-item"><a href=""><i class="la la-male"></i>
-                <span class="menu-title" data-i18n="nav.dash.main">الطلاب  </span>
+                <span class="menu-title" data-i18n="nav.dash.main">العلامات  </span>
                 <span
-                    class="badge badge badge-warning  badge-pill float-right mr-2"></span>
+                    class="badge badge badge-warning  badge-pill float-right mr-2">{{ computeTagsNumber() }}</span>
             </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
+                    <li class="active"><a class="menu-item" href="{{ route('index.tags') }}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                        طالب </a>
+                    <li><a class="menu-item" href="{{ route('create.tags') }}" data-i18n="nav.dash.crypto">أضافة
+                        علامه </a>
                     </li>
                 </ul>
             </li>

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'تعديل الماركه')
+@section('title', 'اضافه علامه')
 @section('content')
 <div class="app-content content">
     <div class="content-wrapper">
@@ -10,9 +10,9 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="">الرئيسية </a>
                             </li>
-                            <li class="breadcrumb-item"><a href=""> الماركه  </a>
+                            <li class="breadcrumb-item"><a href="">  العلامات </a>
                             </li>
-                            <li class="breadcrumb-item active">تعديل الماركه -{{ $brand->name }}
+                            <li class="breadcrumb-item active">اضافه علامه
                             </li>
                         </ol>
                     </div>
@@ -26,7 +26,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="basic-layout-form"> تعديل الماركه -{{ $brand->name }} </h4>
+                                <h4 class="card-title" id="basic-layout-form"> اضافه علامه </h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -42,16 +42,13 @@
                             @include('dashboard.includes.alerts.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form" action="{{ route('update.brands',$brand->id) }}" method="POST"
+                                    <form class="form" action="{{ route('store.tags')}}" method="POST"
                                           enctype="multipart/form-data">
                                           @csrf
-
-                                        {{-- used to without validation to differ between store&update --}}
-                                        <input type="hidden" name="id" value="{{$brand->id  }}">
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <div class="text-center">
                                                 <img
-                                                    src="{{ $brand->photo }}"
+                                                    src=""
                                                     alt="صوره القسم"
                                                     class="rounded-circle"
                                                     style="width:100px;height:100px"
@@ -59,29 +56,20 @@
 
                                             </div>
 
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="form-group">
-                                            <label> صوره القسم </label>
-                                            <label id="projectinput7" class="file center-block">
-                                                <input type="file" id="file" name="photo">
-                                                <span class="file-custom"></span>
-                                            </label>
-                                            @error('photo')
 
-                                            <span class="text-danger">{{ $message }} </span>
-                                            @enderror
-                                         </div>
+
 
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-home"></i> بيانات  القسم </h4>
+                                            <h4 class="form-section"><i class="ft-home"></i> بيانات  العلامه </h4>
 
-                                            {{-- <input type="hidden" name="id" value="{{ $brand->id }}"> --}}
+
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">  اسم القسم </label>
-                                                        <input type="text" value="{{ $brand->name }}" id="name"
+                                                        <label for="projectinput1">  اسم العلامه </label>
+                                                        <input type="text" value="" id="name"
                                                                class="form-control"
                                                                placeholder=" "
                                                                name="name">
@@ -92,10 +80,10 @@
                                                      </div>
                                                 </div>
 
-                                                {{-- <div class="col-md-12">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">  الاسم بالرابط  </label>
-                                                        <input type="text" value="{{ $brand->slug }}" id="name"
+                                                        <label for="projectinput1">  اسم العلامه بالرابط </label>
+                                                        <input type="text" value="" id="name"
                                                                class="form-control"
                                                                placeholder=" "
                                                                name="slug">
@@ -104,27 +92,11 @@
                                                          <span class="text-danger">{{ $message }}</span>
                                                          @enderror
                                                      </div>
-                                                </div> --}}
-
-
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group mt-1">
-                                                        <input type="checkbox"  value="1" name="is_active"
-                                                               id="switcheryColor4"
-                                                               class="switchery" data-color="success"
-                                                              @if($brand->is_active == 1) checked @endif/>
-                                                        <label for="switcheryColor4"
-                                                               class="card-title ml-1">الحالة </label>
-                                                        @error("is_active")
-
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
                                                 </div>
+
+
                                             </div>
+
 
                                         </div>
 
@@ -135,7 +107,7 @@
                                                 <i class="ft-x"></i> تراجع
                                             </button>
                                             <button type="submit" class="btn btn-primary">
-                                                <i class="la la-check-square-o"></i> تحديث
+                                                <i class="la la-check-square-o"></i> اضافه
                                             </button>
                                         </div>
                                     </form>
